@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Car Price Predictor</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to right, #d6eaff, #f0faff);
+            font-family: 'Poppins', sans-serif;
+            padding: 40px 0;
+        }
+
+        .card {
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0, 76, 153, 0.2);
+            background-color: #ffffff;
+        }
+
+        .card-header {
+            background-color:#004080;
+            color: white;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            text-align: center;
+        }
+
+        .card-header h1 {
+            font-size: 28px;
+        }
+
+        label {
+            color: #004080;
+            font-weight: 500;
+        }
+
+        .form-control {
+            border-radius: 8px;
+        }
+
+        .btn-primary {
+            background-color: #004080;
+            border: none;
+            font-weight: 500;
+            border-radius: 8px;
+        }
+
+        .btn-primary:hover {
+            background-color: #004080;
+        }
+
+        h5 {
+            color: #333;
+        }
+
+        #prediction {
+            font-weight: bold;
+            color:#004080;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="card col-md-10 p-4">
+            <div class="card-header">
+                <h1>Car Price Predictor</h1>
+            </div>
+            <div class="card-body">
+                <div class="text-center mb-4">
+                    <h5>Welcome to Car Price Predictor<br>Fill the details below:</h5>
+                </div>
+
+                <form method="post" name="Modelform" onsubmit="send_data(event)">
+                    <div class="form-group">
+                        <label>Select the company:</label>
+                        <select class="form-control" id="company" name="company" required onchange="load_car_models()">
+                            {% for company in companies %}
+                            <option value="{{ company }}">{{ company }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Select the model:</label>
+                        <select class="form-control" id="car_models" name="car_models" required></select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Select Year of Purchase:</label>
+                        <select class="form-control" id="year" name="year" required>
+                            {% for year in years %}
+                            <option value="{{ year }}">{{ year }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Select the Fuel Type:</label>
+                        <select class="form-control" id="fuel_type" name="fuel_type" required>
+                            {% for fuel in fuel_types %}
+                            <option value="{{ fuel }}">{{ fuel }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Enter the Kilometres Driven:</label>
+                        <input type="text" class="form-control" id="kilo_driven" name="kilo_driven" placeholder="e.g. 25000" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block">Predict Price</button>
+                </form>
+
+                <div class="text-center mt-4">
+                    <h4><span id="prediction"></span></h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const carModelsByCompany = {{ car_models_by_company | tojson }};
+
+    function load_car_models() {
+        const companySelect = document.getElementById('company');
+        const modelSelect = document.getElementById('car_models');
+        const selectedCompany = companySelect.value;
+
+        // Clear existing options
+        modelSelect.innerHTML = "";
+
+        if (carModelsByCompany[selectedCompany]) {
+            carModelsByCompany[selectedCompany].forEach(model => {
+                const option = document.createElement('option');
+                option.value = model;
+                option.text = model;
+                modelSelect.appendChild(option);
+            });
+        }
+    }
+
+    function send_data(event) {
+        event.preventDefault();
+        var fd = new FormData(document.querySelector('form'));
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/predict', true);
+        document.getElementById('prediction').innerHTML = "Wait! Predicting Price.....";
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                document.getElementById('prediction').innerHTML = "Prediction: ₹ " + xhr.responseText;
+            }
+        };
+        xhr.send(fd);
+    }
+
+    // Trigger initial model load
+    window.onload = load_car_models;
+</script>
+
+</body>
+</html>

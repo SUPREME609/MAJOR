@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sell Your Car</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #e0f2ff;
+      font-family: 'Poppins', sans-serif;
+      padding: 40px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #004080;
+      margin-bottom: 30px;
+      font-size: 32px;
+      text-shadow: 1px 1px 2px #a3cfff;
+    }
+
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #f1f8ff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 76, 153, 0.1);
+      border-left: 5px solid #004080;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: 500;
+      color: #003366;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border: 1px solid #b3d1ff;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    input[type="file"] {
+      padding: 6px;
+    }
+
+    button {
+      margin-top: 20px;
+      background-color: #004080;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #005bb5;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Sell Your Car</h1>
+
+  <form action="/submit-car" method="POST" enctype="multipart/form-data">
+    <label for="name">Your Name</label>
+    <input type="text" id="name" name="seller_name" required>
+
+    <label for="email">Email</label>
+    <input type="email" id="email" name="seller_email" required>
+
+    <label for="phone">Contact Number</label>
+    <input type="tel" id="phone" name="seller_phone" required>
+
+    <label for="brand">Car Brand</label>
+    <input type="text" id="brand" name="car_brand" required>
+
+    <label for="model">Car Model</label>
+    <input type="text" id="model" name="car_model" required>
+
+    <label for="year">Year of Purchase</label>
+    <input type="number" id="year" name="car_year" min="1990" max="2025" required>
+
+    <label for="km">Kilometers Driven</label>
+    <input type="number" id="km" name="car_km" required>
+
+    <label for="fuel">Fuel Type</label>
+    <select id="fuel" name="fuel_type" required>
+      <option value="">Select</option>
+      <option value="Petrol">Petrol</option>
+      <option value="Diesel">Diesel</option>
+      <option value="CNG">CNG</option>
+      <option value="Electric">Electric</option>
+    </select>
+
+    <label for="condition">Car Condition</label>
+    <select id="condition" name="car_condition" required>
+      <option value="">Select</option>
+      <option value="Excellent">Excellent</option>
+      <option value="Good">Good</option>
+      <option value="Fair">Fair</option>
+    </select>
+
+    <label for="price">Expected Selling Price (₹)</label>
+    <input type="number" id="price" name="expected_price" required>
+
+    <label for="description">Car Description</label>
+    <textarea id="description" name="car_description" rows="4" placeholder="Mention any additional details about the car..."></textarea>
+
+    <label for="photo">Upload Car Images</label>
+    <input type="file" id="photo" name="car_images[]" accept="image/*" multiple required>
+
+    <button type="submit">Submit Car for Sale</button>
+  </form>
+
+</body>
+</html>

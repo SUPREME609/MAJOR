@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sell Refurbished Cars</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: #d6eaff;
+      padding: 40px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    header h1 {
+      color: #004b99;
+      font-size: 36px;
+      text-shadow: 1px 1px 2px #99cfff;
+    }
+
+    .car-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .car-card {
+      background-color: #e6f2ff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 20px rgba(0, 76, 153, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .car-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 6px 30px rgba(0, 76, 153, 0.2);
+    }
+
+    .car-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      border: 2px solid #cce0ff;
+    }
+
+    .car-title {
+      font-size: 20px;
+      font-weight: 600;
+      color: #003366;
+      margin-bottom: 5px;
+    }
+
+    .car-tagline {
+      font-size: 14px;
+      color: #0073e6;
+      margin-bottom: 10px;
+    }
+
+    .car-price {
+      color: #005bb5;
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 15px;
+    }
+
+    .btn-sell {
+      background-color: #0073e6;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-sell:hover {
+      background-color: #005cbf;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Refurbished Cars for Sale</h1>
+  </header>
+
+  <div class="car-container">
+    <div class="car-card">
+      <img src="/static/picture/hondacity.png.png" class="car-img" alt="Refurbished Car 1">
+      <div class="car-title">Honda City ZX (2018)</div>
+      <div class="car-tagline">Certified | 45,000 km | Single Owner</div>
+      <div class="car-price">₹ 6,80,000</div>
+      <button class="btn-sell">Buy Now</button>
+    </div>
+
+    <div class="car-card">
+      <img src="/static/picture/swift.png.png" class="car-img" alt="Refurbished Car 2">
+      <div class="car-title">Maruti Swift VDI (2017)</div>
+      <div class="car-tagline">Refurbished | 60,000 km | Diesel</div>
+      <div class="car-price">₹ 4,50,000</div>
+      <button class="btn-sell">Buy Now</button>
+    </div>
+
+    <div class="car-card">
+      <img src="/static/picture/hyundaii20.png.png" class="car-img" alt="Refurbished Car 3">
+      <div class="car-title">Hyundai i20 Sportz (2019)</div>
+      <div class="car-tagline">Certified | 30,000 km | Petrol</div>
+      <div class="car-price">₹ 5,60,000</div>
+      <button class="btn-sell">Buy Now</button>
+    </div>
+
+    <div class="car-card">
+      <img src="/static/picture/fordecosport.png.png" class="car-img" alt="Refurbished Car 4">
+      <div class="car-title">Ford EcoSport Titanium (2016)</div>
+      <div class="car-tagline">Well Maintained | 70,000 km | Diesel</div>
+      <div class="car-price">₹ 5,20,000</div>
+      <button class="btn-sell">Buy Now</button>
+    </div>
+  </div>
+
+</body>
+</html>

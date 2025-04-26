@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hyundai Creta Details</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f0f6ff;
+      margin: 0;
+      padding: 20px;
+      color: #003366;
+    }
+
+    .card {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      max-width: 600px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .carousel {
+      position: relative;
+      max-width: 100%;
+      overflow: hidden;
+    }
+
+    .car-image {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    .carousel-controls {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      padding: 0 10px;
+    }
+
+    .carousel-controls button {
+      background-color: rgba(0, 68, 128, 0.7);
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      font-size: 20px;
+      cursor: pointer;
+      border-radius: 50%;
+      transition: background-color 0.3s;
+    }
+
+    .carousel-controls button:hover {
+      background-color: rgba(0, 68, 128, 1);
+    }
+
+    .title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+
+    .price {
+      font-size: 20px;
+      color: #0044cc;
+      margin: 10px 0;
+    }
+
+    .features {
+      font-size: 16px;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      background-color: #0044cc;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      width: 100%;
+    }
+
+    .btn:hover {
+      background-color: #002e80;
+    }
+
+    .details {
+      display: none;
+      margin-top: 20px;
+      font-size: 15px;
+      color: #333;
+    }
+
+    .details ul {
+      list-style-type: disc;
+      margin-left: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <!-- Carousel for multiple images -->
+  <div class="carousel">
+    <img src="/static/picture/hyundaicreta.png.png" class="car-image" id="carImage" alt="Hyundai Creta">
+    <div class="carousel-controls">
+      <button onclick="prevImage()">❮</button>
+      <button onclick="nextImage()">❯</button>
+    </div>
+  </div>
+
+  <div class="title">Hyundai Creta</div>
+  <div class="price">₹15.5 Lakh</div>
+  <div class="features">Diesel • Automatic • 5 Seats</div>
+
+  <button class="btn" onclick="toggleDetails()">View Details</button>
+
+  <div class="details" id="details-section">
+    <h3>Specifications:</h3>
+    <ul>
+      <li>Engine: 1.6L CRDi Diesel</li>
+      <li>Transmission: 6-speed Automatic</li>
+      <li>Fuel Efficiency: 19.67 km/l</li>
+      <li>Torque: 260 Nm @ 1500–3000 rpm</li>
+      <li>Power: 126 bhp @ 4000 rpm</li>
+      <li>Boot Space: 433 Litres</li>
+      <li>Ground Clearance: 190 mm</li>
+      <li>Infotainment: 7-inch touchscreen with Android Auto/Apple CarPlay</li>
+      <li>Safety: 6 Airbags, ABS with EBD, Rear Parking Sensors</li>
+      <li>Colors Available: White, Silver, Red, Black, Grey</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+  const images = [
+    "/static/picture/cretblue.png",
+    "/static/picture/cretbla.jpeg",
+    "/static/picture/cretred.png"
+  ];
+  let currentIndex = 0;
+
+  function showImage(index) {
+    const img = document.getElementById("carImage");
+    img.src = images[index];
+  }
+
+  function prevImage() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    showImage(currentIndex);
+  }
+
+  function nextImage() {
+    currentIndex = (currentIndex + 1) % images.length;
+    showImage(currentIndex);
+  }
+
+  function toggleDetails() {
+    const section = document.getElementById("details-section");
+    section.style.display = section.style.display === "block" ? "none" : "block";
+  }
+</script>
+
+</body>
+</html>

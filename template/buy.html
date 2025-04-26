@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Buy Cars</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: #d6eaff;
+      padding: 40px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    header h1 {
+      color: #004b99;
+      font-size: 36px;
+      text-shadow: 1px 1px 2px #99cfff;
+    }
+
+    .car-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .car-card {
+      background-color: #e6f2ff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 20px rgba(0, 76, 153, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .car-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 6px 30px rgba(0, 76, 153, 0.2);
+    }
+
+    .car-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      border: 2px solid #cce0ff;
+    }
+
+    .car-title {
+      font-size: 20px;
+      font-weight: 600;
+      color: #003366;
+      margin-bottom: 8px;
+    }
+
+    .car-price {
+      color: #005bb5;
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 15px;
+    }
+
+    .btn-buy {
+      background-color: #0066cc;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-buy:hover {
+      background-color: #004c99;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Find Your Dream Car</h1>
+  </header>
+
+  <div class="car-container">
+    <div class="car-card">
+      <img src="/static/picture/bmw7series.png" class="car-img" alt="Car 1">
+      <div class="car-title">BMW 7 Series</div>
+      <div class="car-price">₹ 72,00,000</div>
+      <button class="btn-buy">Buy Now</button>
+    </div>
+
+    <div class="car-card">
+      <img src="/static/picture/fortuner.png.png" class="car-img" alt="Car 2">
+      <div class="car-title">Toyota Fortuner</div>
+      <div class="car-price">₹ 45,00,000</div>
+      <button class="btn-buy">Buy Now</button>
+    </div>
+
+    <div class="car-card">
+      <img src="/static/picture/chevcorvette.png.png" class="car-img" alt="Car 3">
+      <div class="car-title">Chevrolet Corvette</div>
+      <div class="car-price">₹ 65,00,000</div>
+      <button class="btn-buy">Buy Now</button>
+    </div>
+
+    <div class="car-card">
+      <img src="/static/picture/nissanleaf.png.png" class="car-img" alt="Car 4">
+      <div class="car-title">Nissan Leaf</div>
+      <div class="car-price">₹ 32,50,000</div>
+      <button class="btn-buy">Buy Now</button>
+    </div>
+  </div>
+
+</body>
+</html>
